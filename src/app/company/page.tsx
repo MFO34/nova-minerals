@@ -7,7 +7,7 @@ export default function CompanyPage() {
   const { t, language } = useLanguage()
 
   const getText = (key: string) => {
-    const fallbacks: any = {
+    const fallbacks: Record<string, Record<string, string>> = {
       en: {
         aboutNovaTitle: 'About Nova Minerals',
         companyHeroDesc: 'Leading supplier of premium industrial minerals with complete supply chain management from Turkish mines to global markets.',
