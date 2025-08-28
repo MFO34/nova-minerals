@@ -19,8 +19,8 @@ export function Header() {
     { name: t('chromiteSand'), nameEn: 'Chromite Sand', href: '/products/chromite-sand' },
     { name: t('sulphur'), nameEn: 'Sulphur', href: '/products/sulphur' },
     { name: t('sodaAsh'), nameEn: 'Soda Ash', href: '/products/soda-ash' },
-    { name: t('waterTreatment'), nameEn: 'Water Treatment', href: '/products/water-treatment' },
     { name: t('fluorspar'), nameEn: 'Fluorspar', href: '/products/fluorspar' },
+    { name: t('waterTreatment'), nameEn: 'Water Treatment', href: '/products/water-treatment' }
   ]
 
   const navigation = [
@@ -34,21 +34,16 @@ export function Header() {
     { name: t('contact'), href: '/contact' },
   ]
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setProductsOpen(false)
       }
     }
-
     document.addEventListener('mousedown', handleClickOutside)
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
+    return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
 
-  // Close mobile menu when route changes
   useEffect(() => {
     setMobileMenuOpen(false)
     setProductsOpen(false)
@@ -66,13 +61,13 @@ export function Header() {
   }
 
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50">
-      <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-label="Top">
+    <header className="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-100">
+      <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-2">
-              <div className="h-8 w-8 bg-blue-600 rounded-md flex items-center justify-center">
+              <div className="h-8 w-8 bg-amber-600 rounded-md flex items-center justify-center">
                 <span className="text-white font-bold text-lg">N</span>
               </div>
               <span className="text-xl font-bold text-gray-900">Nova Minerals</span>
@@ -80,7 +75,7 @@ export function Header() {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
             {navigation.map((item) => (
               <div key={item.name} className="relative">
                 {item.submenu ? (
@@ -91,10 +86,10 @@ export function Header() {
                     <button
                       onClick={() => setProductsOpen(!productsOpen)}
                       onMouseEnter={() => setProductsOpen(true)}
-                      className={`flex items-center space-x-1 transition-colors font-medium px-3 py-2 rounded-lg ${
+                      className={`flex items-center space-x-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                         isActive(item.href) 
-                          ? 'text-blue-600 bg-blue-50' 
-                          : 'text-gray-600 hover:text-blue-600 hover:bg-blue-50'
+                          ? 'text-amber-600 bg-amber-50' 
+                          : 'text-gray-700 hover:text-amber-600 hover:bg-amber-50'
                       }`}
                     >
                       <span>{item.name}</span>
@@ -103,32 +98,26 @@ export function Header() {
                     
                     {productsOpen && (
                       <div 
-                        className="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-xl border border-gray-200 py-3 z-50 animate-in fade-in-0 zoom-in-95 duration-200"
+                        className="absolute top-full left-0 mt-1 w-56 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-50"
                         onMouseLeave={() => setProductsOpen(false)}
                       >
-                        <div className="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wide border-b border-gray-100 mb-2">
-                          {t('ourProducts')}
-                        </div>
                         {item.submenu.map((subItem) => (
                           <Link
                             key={subItem.href}
                             href={subItem.href}
                             onClick={() => setProductsOpen(false)}
-                            className={`block px-4 py-3 text-sm transition-colors group rounded-lg mx-2 ${
-                              isActive(subItem.href)
-                                ? 'text-blue-600 bg-blue-50'
-                                : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50'
+                            className={`block px-4 py-2 text-sm hover:bg-amber-50 hover:text-amber-600 transition-colors ${
+                              isActive(subItem.href) ? 'text-amber-600 bg-amber-50' : 'text-gray-700'
                             }`}
                           >
-                            <div className="font-medium">{subItem.name}</div>
-                            <div className="text-xs text-gray-500 group-hover:text-blue-500">{subItem.nameEn}</div>
+                            {subItem.name}
                           </Link>
                         ))}
-                        <div className="border-t border-gray-100 mt-2 pt-2 mx-2">
+                        <div className="border-t border-gray-100 mt-2 pt-2">
                           <Link
                             href="/products"
                             onClick={() => setProductsOpen(false)}
-                            className="block px-4 py-2 text-sm font-medium text-blue-600 hover:text-blue-700 hover:bg-blue-50 transition-colors rounded-lg"
+                            className="block px-4 py-2 text-sm font-medium text-amber-600 hover:text-amber-700 hover:bg-amber-50"
                           >
                             {t('viewAllProducts')} →
                           </Link>
@@ -139,10 +128,10 @@ export function Header() {
                 ) : (
                   <Link
                     href={item.href}
-                    className={`transition-colors font-medium px-3 py-2 rounded-lg ${
+                    className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                       isActive(item.href) 
-                        ? 'text-blue-600 bg-blue-50' 
-                        : 'text-gray-600 hover:text-blue-600 hover:bg-blue-50'
+                        ? 'text-amber-600 bg-amber-50' 
+                        : 'text-gray-700 hover:text-amber-600 hover:bg-amber-50'
                     }`}
                   >
                     {item.name}
@@ -151,18 +140,18 @@ export function Header() {
               </div>
             ))}
             
-            {/* Language Toggle */}
+            {/* Dil Değiştirme */}
             <button
               onClick={toggleLanguage}
-              className="flex items-center space-x-2 text-gray-600 hover:text-blue-600 transition-colors px-3 py-2 rounded-lg border border-gray-200 hover:border-blue-300"
+              className="flex items-center space-x-2 px-3 py-2 text-sm text-gray-600 hover:text-amber-600 border border-gray-200 rounded-lg hover:border-amber-300 transition-colors"
             >
-              <span className="text-lg">{language === 'en' ? '🇺🇸' : '🇹🇷'}</span>
-              <span className="text-sm font-medium">{language.toUpperCase()}</span>
+              <span>{language === 'en' ? '🇺🇸' : '🇹🇷'}</span>
+              <span className="font-medium">{language.toUpperCase()}</span>
             </button>
             
             <Link 
               href="/contact" 
-              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 shadow-sm hover:shadow-md"
+              className="bg-amber-600 hover:bg-amber-700 text-white font-semibold py-2 px-6 rounded-lg transition-colors text-sm shadow-md"
             >
               {t('getQuote')}
             </Link>
@@ -172,7 +161,7 @@ export function Header() {
           <div className="md:hidden">
             <button
               type="button"
-              className="text-gray-600 hover:text-blue-600 p-2"
+              className="text-gray-600 hover:text-amber-600 p-2"
               onClick={() => setMobileMenuOpen(true)}
             >
               <Menu className="h-6 w-6" />
@@ -183,53 +172,42 @@ export function Header() {
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
           <div className="md:hidden fixed inset-0 z-50">
-            <div className="fixed inset-0 bg-black/20 backdrop-blur-sm" onClick={() => setMobileMenuOpen(false)} />
+            <div className="fixed inset-0 bg-black/20" onClick={() => setMobileMenuOpen(false)} />
             <div className="fixed inset-y-0 right-0 w-full max-w-sm bg-white shadow-xl">
-              <div className="flex h-16 items-center justify-between px-4 border-b border-gray-200">
-                <Link href="/" className="flex items-center space-x-2" onClick={() => setMobileMenuOpen(false)}>
-                  <div className="h-8 w-8 bg-blue-600 rounded-md flex items-center justify-center">
+              <div className="flex h-16 items-center justify-between px-4 border-b">
+                <div className="flex items-center space-x-2">
+                  <div className="h-8 w-8 bg-amber-600 rounded-md flex items-center justify-center">
                     <span className="text-white font-bold text-lg">N</span>
                   </div>
                   <span className="text-xl font-bold text-gray-900">Nova Minerals</span>
-                </Link>
-                <button
-                  type="button"
-                  className="text-gray-600 hover:text-blue-600 p-2"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
+                </div>
+                <button onClick={() => setMobileMenuOpen(false)}>
                   <X className="h-6 w-6" />
                 </button>
               </div>
               
-              <div className="px-4 py-6 space-y-2 overflow-y-auto max-h-[calc(100vh-64px)]">
+              <div className="px-4 py-6 space-y-1 overflow-y-auto max-h-[calc(100vh-64px)]">
                 {navigation.map((item) => (
                   <div key={item.name}>
                     <Link
                       href={item.href}
-                      className={`block text-lg font-medium py-3 px-4 rounded-lg transition-colors ${
-                        isActive(item.href)
-                          ? 'text-blue-600 bg-blue-50'
-                          : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50'
+                      className={`block py-3 px-4 rounded-lg font-medium transition-colors ${
+                        isActive(item.href) ? 'text-amber-600 bg-amber-50' : 'text-gray-700 hover:text-amber-600 hover:bg-amber-50'
                       }`}
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       {item.name}
                     </Link>
                     {item.submenu && (
-                      <div className="ml-4 mt-2 space-y-1 pl-4 border-l-2 border-gray-100">
-                        {item.submenu.map((subItem) => (
+                      <div className="ml-4 mt-1 space-y-1">
+                        {item.submenu.slice(0, 4).map((subItem) => (
                           <Link
                             key={subItem.href}
                             href={subItem.href}
-                            className={`block py-2 px-3 rounded-lg transition-colors ${
-                              isActive(subItem.href)
-                                ? 'text-blue-600 bg-blue-50'
-                                : 'text-gray-600 hover:text-blue-600 hover:bg-blue-50'
-                            }`}
+                            className="block py-2 px-3 text-sm text-gray-600 hover:text-amber-600 hover:bg-amber-50 rounded"
                             onClick={() => setMobileMenuOpen(false)}
                           >
-                            <div className="font-medium text-sm">{subItem.name}</div>
-                            <div className="text-xs text-gray-500">{subItem.nameEn}</div>
+                            {subItem.name}
                           </Link>
                         ))}
                       </div>
@@ -237,23 +215,22 @@ export function Header() {
                   </div>
                 ))}
                 
-                {/* Mobile Language Toggle */}
-                <div className="pt-4 border-t border-gray-200 mt-6">
+                <div className="pt-4 border-t">
                   <button
                     onClick={() => {
-                      toggleLanguage()
-                      setMobileMenuOpen(false)
+                      toggleLanguage();
+                      setMobileMenuOpen(false);
                     }}
-                    className="flex items-center space-x-3 text-gray-600 hover:text-blue-600 transition-colors w-full py-3 px-4 rounded-lg hover:bg-blue-50"
+                    className="flex items-center space-x-3 w-full py-3 px-4 text-gray-600 hover:text-amber-600 hover:bg-amber-50 rounded-lg transition-colors"
                   >
-                    <span className="text-lg">{language === 'en' ? '🇺🇸' : '🇹🇷'}</span>
-                    <span className="text-lg font-medium">{language === 'en' ? 'English' : 'Türkçe'}</span>
+                    <span>{language === 'en' ? '🇺🇸' : '🇹🇷'}</span>
+                    <span className="font-medium">{language === 'en' ? 'English' : 'Türkçe'}</span>
                   </button>
                 </div>
                 
                 <Link
                   href="/contact"
-                  className="block w-full text-center bg-blue-600 text-white font-semibold py-4 px-6 rounded-lg mt-6 hover:bg-blue-700 transition-colors shadow-sm"
+                  className="block w-full text-center bg-amber-600 text-white font-semibold py-3 px-6 rounded-lg mt-4 hover:bg-amber-700 transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {t('getQuote')}

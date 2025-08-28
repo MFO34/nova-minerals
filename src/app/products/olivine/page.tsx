@@ -7,160 +7,160 @@ export default function OlivinePage() {
   const { t } = useLanguage()
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       <Header />
       
       {/* Breadcrumb */}
-      <div className="bg-white py-4 border-b border-gray-200">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="bg-gray-50 py-4 border-b border-gray-100">
+        <div className="mx-auto max-w-7xl px-6">
           <nav className="flex items-center space-x-2 text-sm text-gray-600">
-            <Link href="/" className="hover:text-blue-600">{t('breadcrumbHome')}</Link>
+            <Link href="/" className="hover:text-amber-600 transition-colors">{t('breadcrumbHome')}</Link>
             <span>/</span>
-            <Link href="/products" className="hover:text-blue-600">{t('breadcrumbProducts')}</Link>
+            <Link href="/products" className="hover:text-amber-600 transition-colors">{t('breadcrumbProducts')}</Link>
             <span>/</span>
             <span className="text-gray-900 font-medium">{t('olivine')}</span>
           </nav>
         </div>
       </div>
 
-      {/* Hero */}
-      <div className="bg-gradient-to-r from-green-600 to-emerald-700 py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="text-white">
-              <h1 className="text-4xl font-bold mb-4">{t('olivine')}</h1>
-              <p className="text-xl text-green-100 mb-6">
+      {/* Hero Section */}
+      <div className="bg-white py-20 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          }}></div>
+        </div>
+
+        <div className="relative max-w-6xl mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <div className="mb-6">
+                <span className="bg-stone-100 text-stone-800 px-4 py-2 rounded-full text-sm font-medium border border-stone-200">
+                  Premium Quality
+                </span>
+              </div>
+              <h1 className="text-5xl font-bold mb-6 text-gray-900">{t('olivine')}</h1>
+              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
                 {t('olivineDesc')}
               </p>
-              <div className="flex items-center space-x-4">
-                <span className="bg-white/20 px-4 py-2 rounded-full text-sm font-medium">{t('bestQuality')}</span>
-                <span className="bg-white/20 px-4 py-2 rounded-full text-sm font-medium">{t('multipleApplications')}</span>
+              
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link 
+                  href="/contact" 
+                  className="bg-stone-700 hover:bg-stone-800 text-white font-semibold py-4 px-8 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl text-center"
+                >
+                  {t('getQuote')}
+                </Link>
+                <Link 
+                  href="tel:+905418125722" 
+                  className="bg-white border-2 border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white font-semibold py-4 px-8 rounded-lg transition-colors duration-200 text-center"
+                >
+                  Call Now
+                </Link>
               </div>
             </div>
             
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
-              <h3 className="text-xl font-bold text-white mb-4">{t('quickContact')}</h3>
-              <div className="space-y-3 text-green-100">
-                <div>📞 +90 541 812 5722</div>
-                <div>📧 info@novaminerals.com.tr</div>
-                <div>📍 Çankaya/Ankara, Turkey</div>
+            <div className="text-center">
+              <div className="w-48 h-48 bg-gradient-to-br from-stone-600 to-stone-800 rounded-3xl mx-auto flex items-center justify-center shadow-2xl">
+                <span className="text-white font-bold text-6xl">Ol</span>
               </div>
-              <Link href="/contact" className="block w-full bg-white text-green-600 font-semibold py-3 px-6 rounded-lg text-center mt-6 hover:bg-green-50 transition-colors">
-                {t('getQuote')}
-              </Link>
+              <div className="mt-8 text-center">
+                <div className="text-sm text-gray-500 mb-2">Chemical Formula</div>
+                <div className="text-2xl font-bold text-gray-900">(Mg,Fe)₂SiO₄</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Product Details */}
-      <div className="py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12">
-            <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">{t('productOverview')}</h2>
-              <p className="text-lg text-gray-600 mb-6">
-                {t('olivineOverview')}
-              </p>
-              
-              <div className="bg-white rounded-xl p-6 border border-gray-200 mb-8">
-                <h3 className="text-xl font-bold text-gray-900 mb-4">{t('productTypes')}</h3>
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between py-2 border-b border-gray-100">
-                    <span className="font-medium">{t('ebtSand')}</span>
-                    <span className="text-green-600 font-semibold">{t('available')}</span>
+      {/* Main Content */}
+      <div className="py-20 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid lg:grid-cols-3 gap-12">
+            
+            {/* Available Types */}
+            <div className="lg:col-span-1">
+              <div className="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm">
+                <h2 className="text-2xl font-bold mb-6 text-gray-900">{t('availableTypes')}</h2>
+                <div className="space-y-4">
+                  <div className="flex justify-between items-center py-3 border-b border-gray-100">
+                    <span className="font-medium">EBT Sand</span>
+                    <span className="text-green-600 font-semibold">Available</span>
                   </div>
-                  <div className="flex items-center justify-between py-2 border-b border-gray-100">
-                    <span className="font-medium">{t('foundrySand')}</span>
-                    <span className="text-green-600 font-semibold">{t('available')}</span>
+                  <div className="flex justify-between items-center py-3 border-b border-gray-100">
+                    <span className="font-medium">Foundry Sand</span>
+                    <span className="text-green-600 font-semibold">Available</span>
                   </div>
-                  <div className="flex items-center justify-between py-2 border-b border-gray-100">
-                    <span className="font-medium">{t('blastingSand')}</span>
-                    <span className="text-green-600 font-semibold">{t('available')}</span>
+                  <div className="flex justify-between items-center py-3 border-b border-gray-100">
+                    <span className="font-medium">Blasting Sand</span>
+                    <span className="text-green-600 font-semibold">Available</span>
                   </div>
-                  <div className="flex items-center justify-between py-2 border-b border-gray-100">
-                    <span className="font-medium">{t('refractorySpray')}</span>
-                    <span className="text-green-600 font-semibold">{t('available')}</span>
+                  <div className="flex justify-between items-center py-3 border-b border-gray-100">
+                    <span className="font-medium">Refractory Spray</span>
+                    <span className="text-green-600 font-semibold">Available</span>
                   </div>
-                  <div className="flex items-center justify-between py-2">
-                    <span className="font-medium">{t('slagSand')}</span>
-                    <span className="text-green-600 font-semibold">{t('available')}</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-white rounded-xl p-6 border border-gray-200">
-                <h3 className="text-xl font-bold text-gray-900 mb-4">{t('keyProperties')}</h3>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="text-center p-4 bg-green-50 rounded-lg">
-                    <div className="text-2xl mb-2">🔥</div>
-                    <div className="font-medium">{t('highMeltingPoint')}</div>
-                    <div className="text-sm text-gray-600">1890°C</div>
-                  </div>
-                  <div className="text-center p-4 bg-green-50 rounded-lg">
-                    <div className="text-2xl mb-2">💎</div>
-                    <div className="font-medium">{t('hardness')}</div>
-                    <div className="text-sm text-gray-600">6.5-7 Mohs</div>
-                  </div>
-                  <div className="text-center p-4 bg-green-50 rounded-lg">
-                    <div className="text-2xl mb-2">⚖️</div>
-                    <div className="font-medium">{t('density')}</div>
-                    <div className="text-sm text-gray-600">3.2-3.4 g/cm³</div>
-                  </div>
-                  <div className="text-center p-4 bg-green-50 rounded-lg">
-                    <div className="text-2xl mb-2">🧪</div>
-                    <div className="font-medium">{t('chemicalStability')}</div>
-                    <div className="text-sm text-gray-600">{t('excellent')}</div>
+                  <div className="flex justify-between items-center py-3">
+                    <span className="font-medium">Slag Sand</span>
+                    <span className="text-green-600 font-semibold">Available</span>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div>
-              <div className="bg-white rounded-xl p-6 border border-gray-200 mb-8">
-                <h3 className="text-xl font-bold text-gray-900 mb-4">{t('applications')}</h3>
-                <div className="space-y-4">
-                  <div>
-                    <h4 className="font-semibold text-green-600 mb-2">{t('foundries')}</h4>
-                    <p className="text-gray-600 text-sm">{t('olivineFoundryApp')}</p>
+            <div className="lg:col-span-2 space-y-8">
+              
+              {/* Applications */}
+              <div className="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm">
+                <h2 className="text-2xl font-bold mb-6 text-gray-900">{t('applications')}</h2>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="text-center p-6 bg-gray-50 rounded-xl hover:bg-stone-50 transition-colors">
+                    <div className="text-3xl mb-3">🏭</div>
+                    <h3 className="font-semibold text-gray-900">{t('foundries')}</h3>
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-green-600 mb-2">{t('refractoryIndustry')}</h4>
-                    <p className="text-gray-600 text-sm">{t('olivineRefractoryApp')}</p>
+                  <div className="text-center p-6 bg-gray-50 rounded-xl hover:bg-stone-50 transition-colors">
+                    <div className="text-3xl mb-3">🔥</div>
+                    <h3 className="font-semibold text-gray-900">{t('refractory')}</h3>
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-green-600 mb-2">{t('steelMills')}</h4>
-                    <p className="text-gray-600 text-sm">{t('olivineSteelApp')}</p>
+                  <div className="text-center p-6 bg-gray-50 rounded-xl hover:bg-stone-50 transition-colors">
+                    <div className="text-3xl mb-3">🏗️</div>
+                    <h3 className="font-semibold text-gray-900">{t('steelMills')}</h3>
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-green-600 mb-2">{t('blastingApplications')}</h4>
-                    <p className="text-gray-600 text-sm">{t('olivineBlastingApp')}</p>
+                  <div className="text-center p-6 bg-gray-50 rounded-xl hover:bg-stone-50 transition-colors">
+                    <div className="text-3xl mb-3">⚡</div>
+                    <h3 className="font-semibold text-gray-900">{t('blasting')}</h3>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-green-600 to-emerald-700 rounded-xl p-6 text-white">
-                <h3 className="text-xl font-bold mb-4">{t('whyChooseOurOlivine')}</h3>
-                <div className="space-y-3">
-                  <div className="flex items-start space-x-3">
-                    <div className="w-6 h-6 bg-white/20 rounded-full flex-shrink-0 mt-0.5"></div>
+              {/* Why Choose Our Olivine */}
+              <div className="bg-gradient-to-br from-stone-600 to-stone-800 rounded-2xl p-8 text-white">
+                <h2 className="text-2xl font-bold mb-6">Why Choose Our Olivine?</h2>
+                <div className="space-y-4">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                      <span className="text-stone-200 font-bold">1</span>
+                    </div>
                     <div>
-                      <div className="font-semibold">{t('superiorQuality')}</div>
-                      <div className="text-green-100 text-sm">{t('olivineSuperiorDesc')}</div>
+                      <h3 className="font-semibold mb-2">Superior Quality</h3>
+                      <p className="text-stone-100">Highest quality olivine sourced from Turkish mines with consistent specifications.</p>
                     </div>
                   </div>
-                  <div className="flex items-start space-x-3">
-                    <div className="w-6 h-6 bg-white/20 rounded-full flex-shrink-0 mt-0.5"></div>
+                  <div className="flex items-start space-x-4">
+                    <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                      <span className="text-stone-200 font-bold">2</span>
+                    </div>
                     <div>
-                      <div className="font-semibold">{t('versatileApplications')}</div>
-                      <div className="text-green-100 text-sm">{t('olivineVersatileDesc')}</div>
+                      <h3 className="font-semibold mb-2">Versatile Applications</h3>
+                      <p className="text-stone-100">Suitable for foundry, refractory, blasting, and steel industry applications.</p>
                     </div>
                   </div>
-                  <div className="flex items-start space-x-3">
-                    <div className="w-6 h-6 bg-white/20 rounded-full flex-shrink-0 mt-0.5"></div>
+                  <div className="flex items-start space-x-4">
+                    <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                      <span className="text-stone-200 font-bold">3</span>
+                    </div>
                     <div>
-                      <div className="font-semibold">{t('reliableSupply')}</div>
-                      <div className="text-green-100 text-sm">{t('olivineReliableDesc')}</div>
+                      <h3 className="font-semibold mb-2">Reliable Supply</h3>
+                      <p className="text-stone-100">Strategic location advantages for consistent worldwide delivery.</p>
                     </div>
                   </div>
                 </div>
@@ -171,13 +171,14 @@ export default function OlivinePage() {
       </div>
 
       {/* Related Products */}
-      <div className="py-16 bg-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">{t('relatedProducts')}</h2>
           <div className="grid md:grid-cols-3 gap-8">
+            
             <Link href="/products/iron-pyrite" className="group">
-              <div className="bg-gradient-to-br from-orange-50 to-red-50 rounded-xl p-6 border border-orange-100 group-hover:shadow-lg transition-all duration-300">
-                <div className="w-12 h-12 bg-orange-500 rounded-lg mb-4 flex items-center justify-center">
+              <div className="bg-white rounded-2xl p-6 border border-gray-200 group-hover:shadow-lg transition-all duration-300">
+                <div className="w-16 h-16 bg-gradient-to-br from-amber-500 to-orange-600 rounded-2xl mb-4 flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
                   <span className="text-white font-bold text-xl">Fe</span>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">{t('ironPyrite')}</h3>
@@ -186,8 +187,8 @@ export default function OlivinePage() {
             </Link>
             
             <Link href="/products/chromite-sand" className="group">
-              <div className="bg-gradient-to-br from-gray-50 to-slate-50 rounded-xl p-6 border border-gray-100 group-hover:shadow-lg transition-all duration-300">
-                <div className="w-12 h-12 bg-gray-600 rounded-lg mb-4 flex items-center justify-center">
+              <div className="bg-white rounded-2xl p-6 border border-gray-200 group-hover:shadow-lg transition-all duration-300">
+                <div className="w-16 h-16 bg-gradient-to-br from-gray-600 to-slate-700 rounded-2xl mb-4 flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
                   <span className="text-white font-bold text-xl">Cr</span>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">{t('chromiteSand')}</h3>
@@ -196,8 +197,8 @@ export default function OlivinePage() {
             </Link>
             
             <Link href="/products/manganese" className="group">
-              <div className="bg-gradient-to-br from-purple-50 to-violet-50 rounded-xl p-6 border border-purple-100 group-hover:shadow-lg transition-all duration-300">
-                <div className="w-12 h-12 bg-purple-500 rounded-lg mb-4 flex items-center justify-center">
+              <div className="bg-white rounded-2xl p-6 border border-gray-200 group-hover:shadow-lg transition-all duration-300">
+                <div className="w-16 h-16 bg-gradient-to-br from-orange-600 to-red-700 rounded-2xl mb-4 flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
                   <span className="text-white font-bold text-xl">Mn</span>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">{t('manganese')}</h3>
